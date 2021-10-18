@@ -124,10 +124,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 				}
 				return product
 			})
-			if( newCart !== cart ) {
-				localStorage.setItem('@RocketShoes:cart', JSON.stringify(newCart));
-				setCart(newCart);
-			}
+			if( newCart !== cart ) setNewCart(newCart);
 				
 		} catch {
 			toast.error('Erro na alteração de quantidade do produto');
