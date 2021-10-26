@@ -32,23 +32,6 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 		return [];
 	});
 
-	const setNewCart = (newCart: Product[]) => {
-		setCart(newCart);
-		localStorage.setItem('@RocketShoes:cart', JSON.stringify(newCart));
-	}
-
-	const getStock = async (productId: number) => {
-		const stock = await api.get<Stock[]>('stock', {
-			params: {
-				id: productId
-			}
-		}).then( response => {
-			return response.data[0].amount;
-		});
-
-		return stock;
-	}
-
 	const addProduct = async (productId: number) => {
 
 		try {
